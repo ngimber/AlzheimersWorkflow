@@ -1,6 +1,6 @@
 # AlzheimersWorkflow
 
-This ImageJ macro was specifically written to automate the workflow of dapi and plaque segmentation for the paper Eede et al. 2019 *****add link****
+This ImageJ macro was specifically written to automate the workflow of dapi and plaque segmentation for the paper Eede et al. 2020. 
 
 Input images were 4-channel maximum projections (ch1=Dapi, ch2=Clec7, ch3=4G8, ch4=Iba1).
 
