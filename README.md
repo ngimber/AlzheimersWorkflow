@@ -71,3 +71,8 @@ This ImageJ macro automates the workflow for DAPI and plaque segmentation as des
 
 - **Release 1:** Initial workflow for DAPI and plaque segmentation.  
 - **Release 2:** Enhanced segmentation accuracy by using StarDist for nuclei segmentation.
+
+
+
+**For further details, please refer to the methods sections of the papers indicated above.**
+
