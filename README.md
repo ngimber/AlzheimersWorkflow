@@ -19,7 +19,8 @@ This ImageJ macro automates the workflow for DAPI and plaque segmentation as des
 ### Version 2.0.0
 
 - **Input Format:**
-  - **4-channel maximum projections (TIF format):**  
+  - **4-channel maximum projections (TIF format):**
+    
   - **ch1:** DAPI  
   - **ch2:** 4G8  
   - **ch3:** Clec7  
@@ -44,7 +45,6 @@ This ImageJ macro automates the workflow for DAPI and plaque segmentation as des
 - **Input Format:**
   - **4-channel maximum projections (TIF format):** 
 
-- **4-channel maximum projections (TIF format):**  
   - **ch1:** DAPI  
   - **ch2:** Clec7
   - **ch3:** 4G8   
