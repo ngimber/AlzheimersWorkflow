@@ -3,7 +3,7 @@
 This ImageJ macro automates the workflow for DAPI and plaque segmentation as described in the following papers:
 
 - **Version 1.0.0:** Eede et al., 2020. [https://doi.org/10.15252/embr.201948530](https://doi.org/10.15252/embr.201948530)  
-- **Version 2.0.0:** Geesdorf et al., 2025 
+- **Version 2.0.0:** Geesdorf et al., 2025 ####
 
 ---
 
