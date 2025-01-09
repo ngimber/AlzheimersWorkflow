@@ -1,12 +1,73 @@
-# AlzheimersWorkflow
+# ImageJ Macro for DAPI and Plaque Segmentation
 
-This ImageJ macro was specifically written to automate the workflow of dapi and plaque segmentation for the paper Eede et al. 2020. 
-https://doi.org/10.15252/embr.201948530
+This ImageJ macro automates the workflow for DAPI and plaque segmentation as described in the following papers:
 
-Input images were 4-channel maximum projections (ch1=Dapi, ch2=Clec7, ch3=4G8, ch4=Iba1).
+- **Version 1.0.0:** Eede et al., 2020. [https://doi.org/10.15252/embr.201948530](https://doi.org/10.15252/embr.201948530)  
+- **Version 2.0.0:** Geesdorf et al., ###  
 
-Nuclei were segmented from blurred DAPI channels (Gaussian blur, sigma = 720 nm) by histogram-based thresholding (Otsu binarization) followed by watershed segmentation of the Euclidean distance map of the binary image using ImageJ. Plaques were segmented from the blurred 4G8 channel (Gaussian blur, sigma = 7,2 µm) followed by Otsu binarization. Only objects above 720 µm² were regarded as plaques.
-Cernters of mass and mean intensities for all channels in the region of the segmented region (nucleus and the cytosole above and below) were exported as csv files. Plaque segmentatons were exported as binary images.
+---
 
+## Requirements
 
-Link to  for the radial profile function from Eede et al. 2020: https://github.com/ngimber/RadialProfile2D
+- **Radial Profile Function:** From Eede et al., 2020: [https://github.com/ngimber/RadialProfile2D](https://github.com/ngimber/RadialProfile2D)  
+- **StarDist for ImageJ:** Schmidt et al., 2018: [Stardist](https://imagej.net/plugins/stardist)
+
+---
+
+## Workflow Details
+
+### Version 2.0.0
+
+- **Input Format:**
+  - **4-channel maximum projections (TIF format):**  
+  - **ch1:** DAPI  
+  - **ch2:** 4G8  
+  - **ch3:** Clec7  
+  - **ch4:** Iba1
+    
+**DAPI Signal Processing:**  
+1. **De-noising:** Frequency filtering in Fourier space to remove structures larger than 2.6 µm.  
+2. **Blurring:** Gaussian blur applied with sigma = 520 nm.  
+3. **Nuclei Segmentation:** Used StarDist ('versatile fluorescent nuclei model') for nuclei segmentation.  
+4. **Separation of Merged Nuclei:** Watershed segmentation of the Euclidean distance map on binary images to separate nuclei.  
+
+**Plaque Segmentation:**  
+1. **De-noising:** Frequency filtering to remove structures larger than 26 µm.  
+2. **Background Subtraction:** Rolling ball method (radius = 52 µm).  
+3. **Binarization:** Applied Otsu thresholding.  
+4. **Plaque Identification:** Objects larger than 130 µm² were classified as plaques.  
+     
+---
+
+### Version 1.0.0
+
+- **Input Format:**
+  - **4-channel maximum projections (TIF format):** 
+
+- **4-channel maximum projections (TIF format):**  
+  - **ch1:** DAPI  
+  - **ch2:** Clec7
+  - **ch3:** 4G8   
+  - **ch4:** Iba1  
+  
+**DAPI Signal Processing:**  
+1. **Blurring:** Gaussian blur applied with sigma = 720 nm.  
+2. **Nuclei Segmentation:** Otsu binarization for thresholding, followed by watershed segmentation on the Euclidean distance map.  
+
+**Plaque Segmentation:**  
+1. **Blurring:** Gaussian blur applied with sigma = 7.2 µm.  
+2. **Binarization:** Applied Otsu thresholding.  
+3. **Plaque Identification:** Objects larger than 720 µm² were classified as plaques.  
+
+---
+
+## Data Export
+- Exported nuclei centers of mass and mean intensities for all channels and objects (nucleus and cytosol) as CSV.  
+- Plaque segmentations exported as binary images.
+
+---
+
+## Release Notes
+
+- **Release 1:** Initial workflow for DAPI and plaque segmentation.  
+- **Release 2:** Enhanced segmentation accuracy by using StarDist for nuclei segmentation.
