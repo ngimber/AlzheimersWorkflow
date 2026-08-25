@@ -16,6 +16,33 @@ This ImageJ macro automates the workflow for DAPI and plaque segmentation as des
 
 ## Workflow Details
 
+### Version 2.0.1
+
+- **Input Format:**
+  - **4-channel maximum projections (TIF format):**
+    
+  - **ch1:** DAPI  
+  - **ch2:** 4G8
+  - **ch3:** Iba1
+  - **ch4:** Clec7  
+
+    
+**DAPI Signal Processing:**  
+1. **De-noising:** Frequency filtering in Fourier space to remove structures larger than 2.6 µm.  
+2. **Blurring:** Gaussian blur applied with sigma = 520 nm.  
+3. **Nuclei Segmentation:** Used StarDist ('versatile fluorescent nuclei model') for nuclei segmentation.  
+4. **Separation of Merged Nuclei:** Watershed segmentation of the Euclidean distance map on binary images to separate nuclei.  
+
+**Plaque Segmentation:**  
+1. **De-noising:** Frequency filtering to remove structures larger than 26 µm.  
+2. **Background Subtraction:** Rolling ball method (radius = 52 µm).  
+3. **Binarization:** Applied Otsu thresholding.  
+4. **Plaque Identification:** Objects larger than 130 µm² were classified as plaques.  
+     
+---
+
+## Workflow Details
+
 ### Version 2.0.0
 
 - **Input Format:**
